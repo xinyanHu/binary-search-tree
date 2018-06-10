@@ -9,6 +9,7 @@
 #ifndef BinarySearchTree_hpp
 #define BinarySearchTree_hpp
 
+#include <iostream>
 #include <stack>
 #include <queue>
 
@@ -36,4 +37,13 @@ public:
     }
 };
 
+template <typename T>
+class BSTNode {
+public:
+    T el;
+    BSTNode<T> *left, *right;
+    
+    BSTNode(): left(0), right(0) {}
+    BSTNode(const T&e, BSTNode<T> *l = 0, BSTNode<T> *r = 0) : el(e), left(l), right(r) {}
+};
 #endif /* BinarySearchTree_hpp */
