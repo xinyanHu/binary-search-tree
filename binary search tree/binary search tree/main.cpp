@@ -32,27 +32,11 @@ public:
         clear(root);
         root = 0;
     }
-    
-    bool isEmpty() const {
-        return !root;
-    }
-    
-    void preorder() {
-        preorder(root);
-    }
-    
-    void inorder() {
-        inorder(root);
-    }
-    
-    void postorder() {
-        postorder(root);
-    }
-    
-    T* search(const T& el) const {
-        return search(root, el);
-    }
-    
+    bool isEmpty() const { return !root;}
+    void preorder() { preorder(root); }
+    void inorder() { inorder(root); }
+    void postorder() { postorder(root); }
+    T* search(const T& el) const { return search(root, el); }
     void breadthFirst();
 };
 
