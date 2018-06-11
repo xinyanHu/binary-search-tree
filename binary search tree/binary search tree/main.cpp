@@ -73,6 +73,34 @@ void BST<T>::breadthFirst() {
     }
 }
 
+template <typename T>
+void BST<T>::inorder(BSTNode<T> *p) {
+    if (p) {
+        inorder(p->left);
+        visit(p);
+        inorder(p->right);
+    }
+}
+
+
+template <typename T>
+void BST<T>::preorder(BSTNode<T> *p) {
+    if (p) {
+        visit(p);
+        preorder(p->left);
+        preorder(p->right);
+    }
+}
+
+template <typename T>
+void BST<T>::postorder(BSTNode<T> *p) {
+    if (p) {
+        postorder(p->left);
+        preorder(p->right);
+        visit(p);
+    }
+}
+
 int main(int argc, const char * argv[]) {
     
     return 0;
