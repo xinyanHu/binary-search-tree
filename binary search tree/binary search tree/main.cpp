@@ -78,7 +78,8 @@ void BST<T>::breadthFirst() {
     }
 }
 
-#pragma mark  递归深度遍历
+#pragma mark  深度遍历递归
+
 template <typename T>
 void BST<T>::inorder(BSTNode<T> *p) {
     if (p) {
@@ -106,7 +107,27 @@ void BST<T>::postorder(BSTNode<T> *p) {
     }
 }
 
+#pragma mark  深度遍历非递归
+
+template <typename T>
+void BST<T>::iterativePreorder() {
+    Stack<BSTNode<T> *> travStack;
+    BSTNode<T> *p = root;
+    if (p) {
+        travStack.push(p);
+        while (!travStack.empty()) {
+            p = travStack.pop();
+            visit(p);
+            if (p->right)
+                travStack.push(p->right);
+            if (p->left)
+                travStack.push(p->left);
+        }
+    }
+}
+
 #pragma mark  插入节点
+
 template <typename T>
 void BST<T>::insert(const T& el) {
     BSTNode<T> *p = root, *prev = 0;
@@ -125,7 +146,9 @@ void BST<T>::insert(const T& el) {
         prev->right = new BSTNode<T>(el);
 }
 
+
+
 int main(int argc, const char * argv[]) {
-    BST<int> tree;
+//    BST<int> tree;
     return 0;
 }
