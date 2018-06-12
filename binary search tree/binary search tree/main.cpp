@@ -38,6 +38,10 @@ public:
     void postorder() { postorder(root); }
     T* search(const T& el) const { return search(root, el); }
     void breadthFirst();
+    void iterativePreorder();
+    void iterativeInorder();
+    void iterativePostorder();
+    void insert(const T&);
 };
 
 template <typename T>
@@ -53,6 +57,7 @@ T* BST<T>::search(BSTNode<T> *p, const T& el) const {
     return 0;
 }
 
+#pragma mark - 广度遍历
 template <typename T>
 void BST<T>::breadthFirst() {
     Queue<BSTNode<T> *> queue;
@@ -73,6 +78,7 @@ void BST<T>::breadthFirst() {
     }
 }
 
+#pragma mark - 递归深度遍历
 template <typename T>
 void BST<T>::inorder(BSTNode<T> *p) {
     if (p) {
@@ -81,7 +87,6 @@ void BST<T>::inorder(BSTNode<T> *p) {
         inorder(p->right);
     }
 }
-
 
 template <typename T>
 void BST<T>::preorder(BSTNode<T> *p) {
@@ -101,7 +106,26 @@ void BST<T>::postorder(BSTNode<T> *p) {
     }
 }
 
+#pragma mark - 插入节点
+template <typename T>
+void BST<T>::insert(const T& el) {
+    BSTNode<T> *p = root, *prev = 0;
+    while (p) {
+        prev = p;
+        if (el < p->el)
+            p = p->left;
+        else
+            p = p->right;
+    }
+    if (!root)
+        root = new BSTNode<T>(el);
+    else if (el < prev->el)
+        prev->left = new BSTNode<T>(el);
+    else
+        prev->right = new BSTNode<T>(el);
+}
+
 int main(int argc, const char * argv[]) {
-    
+//    BST<int> tree;
     return 0;
 }

@@ -13,6 +13,7 @@
 #include <stack>
 #include <queue>
 
+#pragma mark - Stack
 template<typename T>
 class Stack : public std::stack<T> {
 public:
@@ -23,6 +24,7 @@ public:
     }
 };
 
+#pragma mark - Queue
 template <typename T>
 class Queue : public std::queue<T> {
 public:
@@ -37,6 +39,7 @@ public:
     }
 };
 
+#pragma mark - BSTNode
 template <typename T>
 class BSTNode {
 public:
